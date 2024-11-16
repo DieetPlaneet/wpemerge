@@ -84,6 +84,8 @@ class ResponseService {
 				header( sprintf( '%s: %s', $name, $value ), $i === 0 );
 			}
 		}
+
+		do_action('wpemerge.responses.responseservice.headerssent', $response);
 	}
 
 	/**
@@ -140,6 +142,8 @@ class ResponseService {
 		} else {
 			$this->sendBodyWithoutLength( $body, $chunk_size );
 		}
+
+		do_action('wpemerge.responses.responseservice.bodysent', $response, $chunk_size, $content_length);
 	}
 
 	/**
